@@ -4,6 +4,30 @@ const tours = JSON.parse(
     fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 
+// Start Check Middlewares
+
+exports.checkID = (req, res, next, val) => {
+    if (req.params.id * 1 > tours.length) {
+        return res.status(404).json({
+            status: 'fail',
+            message: 'Invalid ID'
+        })
+    }
+    next();
+}
+exports.checkBody = (req, res, next)=>{
+    if(!req.body.name || !req.body.price) {
+        return res.status(400).json({
+            status: 'failed',
+            message: 'Missing name or price'
+        })
+    }
+    next();
+    // next middleware will be createTour 
+}
+
+// End Check Middlewares
+
 exports.getAllTours = (req, res) => {
     console.log(req.reqestTime);
     res.status(200).json({
@@ -23,12 +47,12 @@ exports.getTour = (req, res) => {
 
     const id = req.params.id * 1;   // Convert String into a Number
 
-    if (id > tours.length) {
-        return res.status(404).json({
-            status: 'fail',
-            message: 'Invalid ID'
-        })
-    }
+    // if (id > tours.length) {
+    //     return res.status(404).json({
+    //         status: 'fail',
+    //         message: 'Invalid ID'
+    //     })
+    // }
 
     // another solustion 
     // if (!tour) { }
@@ -77,12 +101,6 @@ exports.createTour = (req, res) => {
 }
 
 exports.updateTour = (req, res) => {
-    if (req.params.id * 1 > tours.length) {
-        return res.status(404).json({
-            status: 'fail',
-            message: 'Invalid ID'
-        })
-    }
     res.status(200).json({
         statud: 'success',
         data: {
@@ -93,12 +111,6 @@ exports.updateTour = (req, res) => {
 }
 
 exports.deleteTour = (req, res) => {
-    if (req.params.id * 1 > tours.length) {
-        return res.status(404).json({
-            status: 'fail',
-            message: 'Invalid ID'
-        })
-    }
     res.status(204).json({
         statud: 'success',
         data: null

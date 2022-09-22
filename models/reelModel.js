@@ -22,30 +22,21 @@ const reelSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  price: {
-    type: Number,
-    required: [true, 'A reel must have a price'],
-  },
   priceDiscount: Number,
-  summary: {
+  description: {
     type: String,
     trim: true,
     required: [true, 'A reel must have a description']
   },
-  description: {
+  video: {
     type: String,
-    trim: true
-  },
-  imageCover: {
-    type: String,
-    required: [true, 'A reel must have a cover image']
+    required: [true, 'A reel must have a video']
   },
   images: [String],
   createdAt: {
     type: Date,
     default: Date.now()
   },
-  startDates: [Date]
 });
 const Reel = mongoose.model('Reel', reelSchema);
 

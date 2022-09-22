@@ -2,7 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 
-const tourRouter = require('./routes/tourRoutes');
+const reelRouter = require('./routes/reelRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
@@ -29,14 +29,14 @@ app.use((req, res, next) => {
 // 3) ROUTES
 
 /*
-app.get('/api/v1/tours', getAllTours)
-app.get('/api/v1/tours/:id', getTour)
-app.post('/api/v1/tours', createTour)
-app.patch('/api/v1/tours/:id', updateTour)
-app.delete('/api/v1/tours/:id', deleteTour)
+app.get('/api/v1/reels', getAllReels)
+app.get('/api/v1/reels/:id', getReel)
+app.post('/api/v1/reels', createReel)
+app.patch('/api/v1/reels/:id', updateReel)
+app.delete('/api/v1/reels/:id', deleteReel)
 */
 
-app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/reels', reelRouter);
 app.use('/api/v1/users', userRouter);
 // 4) START THE SERVER
 

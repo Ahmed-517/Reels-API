@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const app = require('./app');
 
 dotenv.config({ path: './config.env' });
+const app = require('./app');
+
 
 // console.log(process.env);
 
@@ -11,7 +12,7 @@ let DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-DB = 'mongodb+srv://AhmedGG:AhmedGG@cluster0.kxbfffq.mongodb.net/natours?retryWrites=true';
+DB='mongodb+srv://AhmedGG:AhmedGG@cluster0.kxbfffq.mongodb.net/natours?retryWrites=true';
 
 console.log(DB);
 

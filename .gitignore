@@ -1,1 +1,7 @@
 node_modules
+dev-data/.DS_Store
+public/.DS_Store
+.DS_Store
+.gitignore
+node_modules/.package-lock.json
+dev-data

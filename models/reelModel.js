@@ -1,43 +1,39 @@
 const mongoose = require('mongoose');
 
 const reelSchema = new mongoose.Schema({
-  name: {
+  userId: {
     type: String,
-    required: [true, 'A reel must have a name'],
-    unique: true,
+    required:[true, 'The reel must have a user']
   },
-  duration: {
-    type: Number,
-    required: [true, 'A reel must have a duration'],
-  },
-  difficulty: {
+  place: {
     type: String,
-    required: [true, 'A reel must have a difficulty'],
+    lowercase: true,
+    required: [true, 'A reel must have a place (#hashtag)'],
   },
-  ratingsAverage: {
-    type: Number,
-    default: 4.5,
+  subPlace: {
+    type: String,
+    default: 'none'
   },
-  ratingQuantity: {
-    type: Number,
-    default: 0,
+  city: {
+    type: String,
+    // lowercase: true,
+    required: [true, 'A reel must have a city'],
   },
-  priceDiscount: Number,
   description: {
     type: String,
     trim: true,
-    required: [true, 'A reel must have a description']
+    required: [true, 'A reel must have a description'],
   },
   video: {
     type: String,
-    required: [true, 'A reel must have a video']
+    // required: [true, 'A reel must have a video']
   },
-  images: [String],
-  createdAt: {
+  postedAt: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
 });
+
 const Reel = mongoose.model('Reel', reelSchema);
 
 module.exports = Reel;

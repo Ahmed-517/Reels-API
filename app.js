@@ -6,6 +6,8 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
+// Start Routes
+
 const reelRouter = require('./routes/reelRoutes');
 const userRouter = require('./routes/userRoutes');
 const commentRouter = require('./routes/commentRoutes');
